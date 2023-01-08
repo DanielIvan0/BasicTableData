@@ -69,9 +69,9 @@ const populateFunction = async () => {
 
 	const data = await response.json();
 
-	const { products, total } = data;
+	const { products } = data;
 
-	return { data: products, total };
+	return products;
 };
 
 const columns = {
@@ -98,12 +98,12 @@ const columns = {
 	}
 };
 
-const nRows = 10;
+const numberOfRows = 10;
 
 const config = {
 	columns,
 	populateFunction,
-	nRows,
+	numberOfRows,
 };
 
 const table = new BasicTableData(config);
