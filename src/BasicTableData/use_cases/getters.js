@@ -31,9 +31,12 @@ export function getRecordFromRawData(index) {
 export function getPageIndex(page) {
 	if (!this._validatePage(page)) throw new Error('Invalid page.');
 
-	const { i: firstIndex, limit: lastIndex } = this._getPageIndex(page);
+	const { i, limit: lastIndex } = this._getPageIndex(page);
 
-	return { firstIndex, lastIndex };
+	return {
+		firstIndex: i + 1,
+		lastIndex: page === this.getNumberOfPages() ? this.getNumberOfRecords() : lastIndex,
+	};
 }
 
 export function getNumberOfRecords() { return this._data.length; }

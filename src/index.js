@@ -50,6 +50,23 @@ const config = {
 
 const table = new BasicTableData(config);
 
-table.init();
+table.init().then(() => {
+	console.log(table);
 
-console.log(table);
+	// table.getData().forEach(console.log);
+
+	// table.sortByField('price');
+	// console.log(table.getPage(1));
+
+	table.filterByField('name', '9');
+	table.sortByField('name');
+	table.getData().forEach(console.log);
+	
+	// console.log(table.getData());
+	table.filterByKeyword('iphone');
+	table.getData().forEach(console.log);
+
+	table.getPage(1).forEach(console.log);
+
+	console.log(table.getPageIndex(1));
+});

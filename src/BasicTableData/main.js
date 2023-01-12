@@ -22,7 +22,7 @@ class BasicTableData extends BasicTableDataCore {
 		this._columns = columns;
 	}
 
-	init() {
+	async init() {
 		const { sortTypes } = this._sorter;
 		this._columnsEntries.forEach(([ field, config ]) => {
 			const { sortable, type } = config;
@@ -34,7 +34,7 @@ class BasicTableData extends BasicTableDataCore {
 			}
 		});
 
-		this.populate();
+		await this.populate();
 	}
 };
 

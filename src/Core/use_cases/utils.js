@@ -16,6 +16,6 @@ export function _validateNumberOfRows(numberOfRows) {
 export function _updatePagesProps() {
 	const numberOfRecords = this._data.length;
 
-	this._numberOfPages = Math.ceil(numberOfRecords / this._numberOfRows);
+	this._numberOfPages = Math.ceil(numberOfRecords / this._numberOfRows) || 1;
 	this._currentPage = 1;
 }

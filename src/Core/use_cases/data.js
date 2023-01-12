@@ -33,5 +33,4 @@ export function _reset() {
 
 	this._numberOfPages = 1;
 	this._currentPage = 1;
-	this._totalRecords = 0;
 }
