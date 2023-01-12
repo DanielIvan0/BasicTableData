@@ -4,7 +4,6 @@ import * as filters from "./use_cases/filters.js";
 import * as sorters from "./use_cases/sorters.js";
 import * as getters from "./use_cases/getters.js";
 import * as setters from "./use_cases/setters.js";
-import * as errors from "./use_cases/errors.js";
 
 class BasicTableData extends BasicTableDataCore {
 	constructor(config) {
@@ -45,7 +44,6 @@ const methods = {
 	...sorters,
 	...setters,
 	...getters,
-	...errors,
 };
 
 for (const key in methods) BasicTableData.prototype[key] = methods[key];
