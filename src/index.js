@@ -20,7 +20,6 @@ const columns = {
 		type: 'numeric',
 	},
 	name: {
-		header: 'Artículo',
 		prop: 'title',
 		sortable: true,
 		type: 'string',
@@ -30,14 +29,11 @@ const columns = {
 		header: 'Descripción',
 	},
 	price: {
-		header: 'Precio',
 		sortable: true,
 		type: 'numeric',
 		normalizer: price => price.toFixed(2),
 	},
-	stock: {
-		header: 'Stock',
-	}
+	stock: {}
 };
 
 const numberOfRows = 10;
@@ -51,22 +47,5 @@ const config = {
 const table = new BasicTableData(config);
 
 table.init().then(() => {
-	console.log(table);
-
-	// table.getData().forEach(console.log);
-
-	// table.sortByField('price');
-	// console.log(table.getPage(1));
-
-	table.filterByField('name', '9');
-	table.sortByField('name');
-	table.getData().forEach(console.log);
-	
-	// console.log(table.getData());
-	table.filterByKeyword('iphone');
-	table.getData().forEach(console.log);
-
-	table.getPage(1).forEach(console.log);
-
-	console.log(table.getPageIndex(1));
+	console.log(table.getPage(1));
 });
