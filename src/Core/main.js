@@ -12,7 +12,7 @@ class BasicTableDataCore {
 		this._columnsEntries = columnsEntries;
 		
 		this._filter = {
-			mainKeyword: '',
+			mainKeyword: null,
 			fieldKeywords: {},
 		};
 		
