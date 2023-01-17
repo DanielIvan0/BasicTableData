@@ -28,7 +28,7 @@ export function getRecordFromRawData(index) {
 	return this._rawData.at(index);
 }
 
-export function getPageIndex(page) {
+export function getPageIndex(page = this._currentPage) {
 	if (!this._validatePage(page)) throw new Error('Invalid page.');
 
 	const { i, limit: lastIndex } = this._getPageIndex(page);
