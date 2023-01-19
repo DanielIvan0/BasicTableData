@@ -20,7 +20,8 @@ export function _applyFilters() {
 			const { [field]: fieldKeyword } = fieldKeywords;
 
 			const mainMatch = mainKeyword ? value.includes(mainKeyword) : true;
-			const fieldMatch = fieldKeyword ? value.includes(fieldKeyword) : false;
+			const fieldMatch = fieldKeyword ? value.includes(fieldKeyword) : true;
+			console.log(mainMatch);
 
 			return mainMatch && fieldMatch;
 		});
