@@ -8,12 +8,15 @@ export function _sortByField(field) {
 		case 'numeric':
 			this._numericSort();
 			break;
+		case 'date':
+			this._dateSort();
+			break;
 		default:
 			this._stringSort();
 	}
 }
 
-export function _numericSort () {
+export function _numericSort() {
 	const { field } = this._sorter;
 
 	this._rawData.sort((record1, record2) => {
@@ -21,6 +24,17 @@ export function _numericSort () {
 		const { [field]: num2 } = record2;
 	
 		return parseFloat(num1) - parseFloat(num2);
+	});
+}
+
+export function _dateSort() {
+	const { field } = this._sorter;
+
+	this._rawData.sort((record1, record2) => {
+		const { [field]: date1 } = record1;
+		const { [field]: date2 } = record2;
+
+		return date1 - date2;
 	});
 }
 

@@ -12,6 +12,8 @@ const populateFunction = async () => {
 	return products;
 };
 
+let i = 1;
+const currentTime = new Date().getTime();
 const columns = {
 	folio: {
 		prop: 'id',
@@ -33,10 +35,25 @@ const columns = {
 		type: 'numeric',
 		normalizer: price => price.toFixed(2),
 	},
-	stock: {}
+	date: {
+		sortable: true,
+		type: 'date',
+		normalizer: () => {
+			const proportion = ((i % 100) + 1) / 100;
+			const time = currentTime * proportion;
+			const date = new Date(time);
+
+			i ++;
+
+			return date;
+		},
+		get(date) {
+			return date.toLocaleString();
+		}
+	},
 };
 
-const numberOfRows = 10;
+const numberOfRows = 20;
 
 const config = {
 	columns,
@@ -47,5 +64,6 @@ const config = {
 const table = new BasicTableData(config);
 
 table.init().then(() => {
-	console.log(table.getPage(1));
+	const data = table.getPage();
+	console.table(data);
 });

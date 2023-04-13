@@ -3,9 +3,19 @@ export function _getPage(page) {
 	
 	const { i, limit } = this._getPageIndex(page);
 	
-	const slice = this._data.slice(i, limit);
+	const slice = this._data.slice(i, limit).filter(Boolean);
 
-	return slice.filter(Boolean);
+	for (const key in this._getters) {
+		const { [key]: getter } = this._getters;
+
+		slice.forEach(row => {
+			const value = row[key];
+
+			row[key] = getter(value);
+		});
+	}
+
+	return slice;
 }
 
 export function _getPageIndex(page) {

@@ -19,7 +19,7 @@ class BasicTableDataCore {
 		this._sorter = {
 			sortableFields: {},
 			field: null,
-			sortTypes: [ 'string', 'numeric' ],
+			sortTypes: [ 'string', 'numeric', 'date' ],
 		};
 		
 		this._getData = populateFunction;
@@ -29,6 +29,8 @@ class BasicTableDataCore {
 		this._numberOfRows = numberOfRows;
 		this._numberOfPages = 1;
 		this._currentPage = 1;
+
+		this._getters = {};
 	}
 }
 

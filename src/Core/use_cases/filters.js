@@ -21,7 +21,6 @@ export function _applyFilters() {
 
 			const mainMatch = mainKeyword ? value.includes(mainKeyword) : true;
 			const fieldMatch = fieldKeyword ? value.includes(fieldKeyword) : true;
-			console.log(mainMatch);
 
 			return mainMatch && fieldMatch;
 		});

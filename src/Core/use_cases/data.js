@@ -1,5 +1,5 @@
 export async function _populate() {
-	const data = await this._getData();
+	const data = await this._getData(...arguments);
 
 	this._saveData(data);
 
@@ -14,7 +14,7 @@ export function _saveData(rawData) {
 			const { prop = field } = config;
 			const value = row.hasOwnProperty(prop) ? row[prop] : config.default;
 
-			record[field] = config.hasOwnProperty('normalizer') ? config.normalizer(value) : value;
+			record[field] = config.hasOwnProperty('normalizer') ? config.normalizer(value, row, this) : value;
 		});
 
 		return record;

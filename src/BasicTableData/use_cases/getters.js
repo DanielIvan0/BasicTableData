@@ -34,7 +34,7 @@ export function getPageIndex(page = this._currentPage) {
 	const { i, limit: lastIndex } = this._getPageIndex(page);
 
 	return {
-		firstIndex: i + 1,
+		firstIndex: this._data.length ? i + 1 : 0,
 		lastIndex: page === this.getNumberOfPages() ? this.getNumberOfRecords() : lastIndex,
 	};
 }

@@ -25,13 +25,15 @@ class BasicTableData extends BasicTableDataCore {
 	async init() {
 		const { sortTypes } = this._sorter;
 		this._columnsEntries.forEach(([ field, config ]) => {
-			const { sortable, type } = config;
+			const { sortable, type, get } = config;
 	
 			if (sortable === true) {
 				if (!sortTypes.includes(type)) throw new Error(`${type} is not a valid sort type.`);
 	
 				this._sorter.sortableFields[field] = type;
 			}
+
+			if (typeof get === 'function') this._getters[field] = get;
 		});
 
 		await this.populate();
