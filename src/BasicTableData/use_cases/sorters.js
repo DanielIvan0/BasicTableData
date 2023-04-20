@@ -3,10 +3,6 @@ export function sortByField(field) {
 	if (!this._sorter.sortableFields.hasOwnProperty(field)) throw new Error(`${field} must be specified as a sortable field.`);
 
 	this._sortByField(field);
-	this._applyFilters();
 }
 
-export function reverse() {
-	this._reverse();
-	this._applyFilters();
-}
+export function reverse() { this._reverse(); }

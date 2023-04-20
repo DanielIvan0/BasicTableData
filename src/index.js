@@ -33,13 +33,17 @@ const columns = {
 	price: {
 		sortable: true,
 		type: 'numeric',
-		normalizer: price => price.toFixed(2),
+		get(price) {
+			console.log(price);
+
+			return price.toFixed(2);
+		}
 	},
 	date: {
 		sortable: true,
 		type: 'date',
 		normalizer: () => {
-			const proportion = ((i % 100) + 1) / 100;
+			const proportion = (i % 100) / 100;
 			const time = currentTime * proportion;
 			const date = new Date(time);
 
@@ -48,12 +52,13 @@ const columns = {
 			return date;
 		},
 		get(date) {
+			console.dir(date);
 			return date.toLocaleString();
 		}
 	},
 };
 
-const numberOfRows = 20;
+const numberOfRows = 10;
 
 const config = {
 	columns,
@@ -64,6 +69,16 @@ const config = {
 const table = new BasicTableData(config);
 
 table.init().then(() => {
-	const data = table.getPage();
-	console.table(data);
+	const data1 = table.getPage();
+	console.table(data1);
+
+	table.sortByField('date');
+
+	const data2 = table.getPage();
+	console.table(data2);
+
+	table.sortByField('date');
+
+	const data3 = table.getPage();
+	console.table(data3);
 });

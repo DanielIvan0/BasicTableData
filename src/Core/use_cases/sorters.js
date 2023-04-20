@@ -14,6 +14,8 @@ export function _sortByField(field) {
 		default:
 			this._stringSort();
 	}
+
+	this._applyFilters();
 }
 
 export function _numericSort() {
@@ -59,6 +61,9 @@ export function _applySorter() {
 	this._sortByField(field);
 }
 
-export function _reverse() { this._rawData.reverse(); }
+export function _reverse() {
+	this._rawData.reverse();
+	this._applyFilters();
+}
 
 export function _clearSorter() { this._sorter.field = null; }
